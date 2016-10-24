@@ -1,0 +1,11 @@
+
+<patternset id="jar.pattern">
+	<include name="**/*.jar" />
+</patternset>
+<patternset id="class.pattern">
+	<include name="**/*.class" />
+</patternset>
+<patternset id="java_compile.pattern">
+	<include name="**/*.java" />
+</patternset>
+

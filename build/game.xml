@@ -1,0 +1,29 @@
+
+<target name="build-game" depends="jar-game">
+</target>
+
+<target name="setup">
+	<mkdir dir="${game.build}/classes" />
+	<mkdir dir="${game.build}/stage" />
+</target>
+
+<target name="compile-game" depends="setup">
+	<javac source="${game.java.version}" target="${game.java.version}" srcdir="${game.java.src}" destdir="${game.build}"
+		optimize="no" debug="no" deprecation="true" verbose="false" nowarn="true" 
+		includeAntRuntime="false">
+		<patternset refid="java_compile.pattern" />
+	</javac>
+</target>
+
+<target name="jar-game" depends="compile-game">
+	<jar jarfile="${game.build}/stage/game.jar">
+		<fileset dir="${game.build}/classes" />
+		<manifest>
+			<attribute name="Main-Class" value="game.Main"/>
+		</manifest>
+	</jar>
+</target>
+
+<target name="clean-game">
+	<delete dir="${game.build}/classes" />
+</target>

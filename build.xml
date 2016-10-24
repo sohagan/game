@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!-- Game Build System -->
+<!DOCTYPE project [
+	<!ENTITY patterns SYSTEM "./build/patterns.xml">
+	<!ENTITY libraries SYSTEM "./build/libraries.xml">
+	<!ENTITY game SYSTEM "./build/game.xml">
+]>
+
+<project name="The Game" default="release" basedir=".">
+
+	<property file="game.properties"/>
+
+	&patterns;
+	&libraries;
+	&game;
+		
+	<target name="help">
+		<echo message="ant compile [compile code]" />
+		<echo message="ant clean [clean class files and JAR]" />
+		<echo message="ant release [Build JAR]" />
+	</target>
+
+	<target name="release" depends="build"> </target>
+
+	<target name="build">
+		<antcall target="jar-game"/>
+	</target>
+
+	<target name="clean">
+		<antcall target="clean-game" />
+		<antcall target="clean-ear" />
+	</target>
+</project>
+
