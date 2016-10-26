@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -23,6 +24,18 @@ public class Deck {
 		} else {
 			throw new UnsupportedOperationException();
 		}
+	}
+
+	public Hand getHand(int size) {
+		Hand hand = new Hand();
+		List<Card> handCards = new ArrayList<>();
+		for (Iterator<Card> iter = cards.listIterator(); iter.hasNext() && size > 0; size-- ) {
+		    Card c = iter.next();
+		    handCards.add(c);
+		    iter.remove();
+		}
+		hand.setCards(handCards);
+		return hand;
 	}
 
 	public List<Card> getCards() {
