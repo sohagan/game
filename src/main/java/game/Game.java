@@ -26,7 +26,8 @@ public class Game {
 		Deck deck = Deck.instance(Deck.Type.CARS, 10);
 		
 		deck.shuffle();
-	
+
+		
 		Hand hand = deck.getHand(5);
 	
 		Card card = hand.getCard(0);
