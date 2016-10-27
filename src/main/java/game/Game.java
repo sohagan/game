@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Game {
 
 	/**
-	 * updated
+	 * updated 3
 	 */
 	public static String newline = System.getProperty("line.separator");
 	private static String EXIT = "exit";
