@@ -8,4 +8,9 @@ public class Card {
 	public Card(Map<String, Attribute> attributes) {
 		this.attributes = attributes;
 	}
+
+	@Override
+	public String toString() {
+		return "Card [attributes=" + attributes + "]";
+	}
 }

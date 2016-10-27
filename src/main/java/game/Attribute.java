@@ -28,4 +28,9 @@ public class Attribute implements Comparable<Attribute> {
 			return this.value > attribute.value ? 1 : -1;
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "Attribute [name=" + name + ", value=" + value + "]";
+	}
 }
