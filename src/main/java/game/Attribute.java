@@ -1,9 +1,16 @@
 
+/**
+ * 
+ * @author Lo
+ *
+ */
+
 public class Attribute implements Comparable<Attribute> {
 
 	private String name = null;
 	private int value = 0;
 	
+
 	public Attribute(final String name, final int value) {
 		if (value < 0 || value > 9) {
 			throw new IllegalArgumentException("value should be between 0 and 9 inclusive");
