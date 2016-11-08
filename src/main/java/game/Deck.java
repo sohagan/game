@@ -27,6 +27,8 @@ public class Deck {
 	}
 
 	public Hand getHand(int size) {
+		assert(size > cards.size());
+		
 		Hand hand = new Hand();
 		List<Card> handCards = new ArrayList<>();
 		for (Iterator<Card> iter = cards.listIterator(); iter.hasNext() && size > 0; size-- ) {
@@ -38,6 +40,8 @@ public class Deck {
 		return hand;
 	}
 
+	
+	
 	public List<Card> getCards() {
 		return cards;
 	}
@@ -73,4 +77,5 @@ public class Deck {
 		Random ran = new Random();
 		return min + ran.nextInt(max - min + 1);		
 	}
+	
 }

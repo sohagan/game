@@ -24,4 +24,9 @@ public class Computer extends Player {
 		this.intelligence = intelligence;
 	}
 
+	@Override
+	public Attribute chooseAttribute(Card card) {
+		return intelligence.select(card);
+	}
+
 }

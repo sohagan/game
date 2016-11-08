@@ -9,8 +9,25 @@ public class Card {
 		this.attributes = attributes;
 	}
 
+	public Attribute getFirstAttribute() {
+		return attributes.entrySet().iterator().next().getValue();
+	}
+	
+	public Attribute getAttribute(int index) {
+		Attribute attArray[] = (Attribute[])attributes.values().toArray();
+		return attArray[index];
+	}
+	
+	public Attribute getNameAttribute(String attributeName) {
+		return  attributes.get(attributeName);
+	}
+	
+	public int getNumberOfAttributes() {
+		return attributes.keySet().size();
+	}
+	
 	@Override
 	public String toString() {
-		return "Card [attributes=" + attributes + "]";
+		return "Card [ attributes = " + attributes + " ]";
 	}
 }
