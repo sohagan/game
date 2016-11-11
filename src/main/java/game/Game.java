@@ -48,13 +48,16 @@ public class Game {
 				
 				System.out.println(current.getName() + "'s selected attribute is " + attribute);
 				current = playHand(current, players, attribute);
-				System.out.println(current.getName() + " won that round");
+				System.out.println("" + current.getName() + " won that round");
 				
 				winningHand(current, players);
 			}
 			
-			System.out.println("Game over. Winner = " + current.getName());
-			System.out.println("Options : X (Exit), G (Play Again)");
+			System.out.println("#####################################################");
+			System.out.println("Game over. Winner is " + current.getName());
+			System.out.println("#####################################################");
+
+			System.out.println("Options : X (Exit), or Any Other Key to Play Again");
 			System.out.print("Enter Command : ");
 			String text = scan.nextLine();
 			System.out.println(text);
@@ -77,9 +80,11 @@ public class Game {
 				if (player.getType().equals(Player.Type.HUMAN)) {
 					System.out.println(player.getName().toUpperCase() + " please show your card by hitting enter key");
 					String text = scan.nextLine();
-					System.out.println(player.getName().toUpperCase() + " Your attributes are " + player.getHand().getCard(0));
+					System.out.println(player.getName().toUpperCase() + " Your attributes are ");
+					player.getHand().getCard(0).showAttributes();
 				} else {
-					System.out.println("[COMPUTER PLAYER = " + player.getName().toUpperCase() + "] card attributes are " + player.getHand().getCard(0));
+					System.out.println("[COMPUTER PLAYER = " + player.getName().toUpperCase() + "] card attributes are ");
+					player.getHand().getCard(0).showAttributes();
 				}
 			}
 		}
@@ -107,6 +112,14 @@ public class Game {
 		return true;
 	}
 
+	private void printCurrentStatus(List<Player> players) {
+		Iterator<Player> playerIterator = players.iterator();
+		while (playerIterator.hasNext()) {
+			Player player = playerIterator.next();
+			System.out.println(player.getName() + " has [" + player.getHand().getCards().size() + "] cards left");
+		}
+	}
+	
 	private void winningHand(Player winner, List<Player> players) {
 		Iterator<Player> playerIterator = players.iterator();
 		while (playerIterator.hasNext()) {
@@ -118,6 +131,7 @@ public class Game {
 				winner.getHand().swapToBottom();
 			}
 		}
+		printCurrentStatus(players);
 	}
 
 	private void dealDeck(List<Player> players) {
@@ -146,20 +160,13 @@ public class Game {
 			if (!opponent.equals(currentWinner)) {
 				Card card = opponent.getHand().getCard(0);
 
-				System.out.println(card.toString());
 				Attribute opponentsAttribute = card.getNameAttribute(attribute
 						.getName());
-
-				// compare to current highest
-				// check requirements regarding what happens if attribute
-				// values are the same ?
-				// i.e. who is the winner.
 
 				if (attribute.getValue() < opponentsAttribute.getValue()) {
 					attribute = opponentsAttribute;
 					currentWinner = opponent;
 				}
-
 			}
 		}
 		return currentWinner;

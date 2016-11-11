@@ -61,12 +61,12 @@ public class Deck {
 		attribNames.add("Price");
 		attribNames.add("Speed");
 		attribNames.add("CC");
-		attribNames.add("Cool Value");
+		attribNames.add("Cool Factor");
 
 		for (int deckSize = 0; deckSize < size; deckSize++) {
 			Map <String, Attribute>attributeMap = new HashMap<>();
 			attribNames.forEach(item->{
-				attributeMap.put(item, new Attribute(item, getRandomAttributeValue(1, 9)));
+				attributeMap.put(item.toLowerCase(), new Attribute(item, getRandomAttributeValue(1, 9)));
 			});
 			deck.add(new Card(attributeMap));
 		}

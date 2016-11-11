@@ -9,9 +9,8 @@ public class RandomIntelligence implements Intelligence {
 	}
 	
 	private int getRandomIndex(Card card) {
-		int min = 0;
 		int max = card.getNumberOfAttributes();
 		Random ran = new Random();
-		return min + ran.nextInt(max - min + 1);		
+		return ran.nextInt(max - 1) + 1;		
 	}
 }
